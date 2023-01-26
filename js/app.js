@@ -1,7 +1,11 @@
 new Swiper('.slider', {
-    speed: 2400,
-    mousewheel: true,
-    spaceBetween: 18,
-    parallax: true,
-    freeMode: true
+	// direction: 'vertical',
+	// freeMode: true,
+	speed: 2400,
+	parallax: true,
+	spaceBetween: 18,
+	mousewheel: {
+		enabled: true,
+		sensitivity: 2.4
+	}
 })

@@ -1,44 +1,84 @@
-*{
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html, body {
+	height: 100%;
+	background-color: #000;
+}
+:root {
+	--transition: 1.75s cubic-bezier(.2, .6, 0, 1);
+}
+.slider {
+	height: 100%;
+}
+.slider__layer {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center;
+	will-change: transform;
+	/* transition: var(--transition)!important; */
+}
+.slider__layer::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	box-shadow: inset 0 0 250px rgb(0 0 0 / .3);
+}
+.slider__item {
+	overflow: hidden;
+}
+.slider__wrapper {
+	will-change: transform;
+	transform-style: preserve-3d;
+	/* transition: var(--transition)!important; */
+}
+
+
+/* === removing default button style ===*/
+.button {
     margin: 0;
+    margin-left: 870px;
+    margin-top: 500px;
+    height: auto;
+    background: transparent;
     padding: 0;
+    border: none;
+  }
+  
+  /* button styling */
+  .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255,255,255,0.6);
+    --animation-color: #37FF8B;
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+  }
+  /* this is the text, when you hover on button */
+  .hover-text {
+    position: absolute;
     box-sizing: border-box;
-}
-
-html, body{
-    height: 100%;
-    background-color: #000;
-}
-
-:root{
-    --transition: 1.75s cubic-bezier(.20, .6, 0, 1);
-}
-
-.slider{
-    height: 100%;
-}
-
-.slider__layer{
-    position: absolute;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0%;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    will-change: transofrm;
-    transition: var(--transition);
-}
-
-.slider__layer::before{
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    box-shadow: inset 0 0 250px rgb(0, 0, 0 / .3);
-}
-
-.slider__item{
+    border-right: var(--border-right) solid var(--animation-color);
     overflow: hidden;
-}
-
-.slider__wrapper{
-    will-change: transofrm;
-    transform-style: preserve-3d;
-}
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+  }
+  /* hover */
+  .button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color))
+  }
